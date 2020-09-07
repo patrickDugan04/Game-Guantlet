@@ -1,0 +1,24 @@
+<head>
+  <title>{% block title %} {% endblock %}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+  <nav style="background-color:black">
+    <div class="nav-wrapper">
+      <a href="/" class="brand-logo"><span style="color:green; font-weight: bold;">GG</span></a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        {% if not request.session.id %}
+          <li><a href="/login/">login</a></li>
+          <li><a href="/register/">register</a></li>
+        {% endif %}
+
+        {% if request.session.id %}
+          <li><a href="/logout/">logout</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+  {% block content %}
+
+  {% endblock %}
+</body>
